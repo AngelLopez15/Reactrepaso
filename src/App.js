@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Curso3 from "./components/Curso3";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="grid grid-cols-3 gap-4">
+      <Curso3 
+        title="React desde cero"
+        imagen="./assets/universe.jpg"
+        price="1000MNX"
+        prof="Angel"
+      />
+      <Curso3 
+        title="Vue desde cero"
+        imagen="./assets/universe.jpg"
+        price="500MNX"
+        prof="Octavio"
+      />
+      <Curso3 
+        title="Angular desde cero"
+        imagen="./assets/universe.jpg"
+        price="2000MNX"
+        prof="López"
+      />
     </div>
   );
 }
