@@ -1,4 +1,5 @@
 import Curso3 from "./components/Curso3";
+import Curso4 from "./components/Curso4"
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         price="500MNX"
         prof="Octavio"
       />
-      <Curso3 
+      <Curso4 
         title="Angular desde cero"
         imagen="./assets/universe.jpg"
         price="2000MNX"
