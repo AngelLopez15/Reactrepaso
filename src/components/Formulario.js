@@ -17,12 +17,14 @@ class Formulario extends Component {
     this.state = {
       nombre: "",
       correo: "",
+      fecha: new Date()
     }
 
     // Para poder usar los metodos debemos hacer un bind (pasarle la referencia del "this") que enlazar el metodo
     // con el "this" de esta clase
     this.cambiarNombre = this.cambiarNombre.bind(this)
     this.cambiarCorreo = this.cambiarCorreo.bind(this)
+    this.cambiarFecha = this.cambiarFecha.bind(this)
 
   }
 
@@ -41,6 +43,11 @@ class Formulario extends Component {
     })
   }
 
+  cambiarFecha() {
+    this.setState({
+      fecha: new Date()
+    })
+  }
   // Ciclo de vida del componente
   
   // CILCO DE VIDA DEL MONTAJE
@@ -58,6 +65,13 @@ class Formulario extends Component {
   componentDidMount() {
     let elemento = document.getElementById("elemento")
     console.log(elemento)
+
+    // para poder actualizar la fecha cada segundo
+    // tambien funciona declarando let intervaloFecha = .....
+    this.intervaloFecha = setInterval(()=> {
+      this.cambiarFecha()
+      console.log(new Date())
+    }, 1000)
   }
 
   // CICLO DE VIDA DE ACTUALIZACION
@@ -75,8 +89,8 @@ class Formulario extends Component {
   // tenia el componente antes de actualizarse a traves de los parametros "prevProps" y "prevState"
   // nos sirve para comprar el estado previo con el estado actual
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps)
-    console.log(prevState)
+    // console.log(prevProps)
+    // console.log(prevState)
   }
 
   // Los tres metodos siguientes estan deprecados (ya no se usan)
@@ -93,6 +107,12 @@ class Formulario extends Component {
   */
   // componentWillUnmount() {}
 
+  // Para poder detener el setInterval para que no este corriendo todo el tiempo mientras tenemos la aplicacion
+  // abierta y evitar que se sigan gastando recursos por esta ejecutando la funcion vamos a desmontar el componente
+  componentWillUnmount() {
+    clearInterval(this.intervaloFecha)
+  }
+
   // Metodo render es obligatorio.
   // El metod que corre por defecto es el render
   render() {
@@ -100,6 +120,7 @@ class Formulario extends Component {
     return (
       <div>
         <p>Formulario</p>
+        <p>Fecha actual: { Math.ceil(this.state.fecha/1000) }</p>
         <form id="elemento">
           <div>
             <label>Nombre completo</label>
