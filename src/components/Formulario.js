@@ -47,7 +47,8 @@ class Formulario extends Component {
   // Antes se ocupaba el metodo "componentWillMount()" para poder hacer logica antes de que el componente
   // se renderizara pero en las nuevas versiones ya no existe este metodo (versiones 16)
   // Toda la logica que se necesite hacer antes de renderizar el componente se debe de hacer en el 
-  // constructor (calculos matematicos, propiedades numericas etc.)
+  // constructor (calculos matematicos, propiedades numericas etc.) NOTA: debemos analisar bien que poner en el 
+  // constructor por que solo se ejecutara una sola vez
   // componentWillMount() {}
 
   // Despues de que se renderizo el componente se ejecuta el metodo "componentDidMount()" este hace referencia
@@ -60,14 +61,36 @@ class Formulario extends Component {
   }
 
   // CICLO DE VIDA DE ACTUALIZACION
+
+  // Un componente se puede actualizar cunado pasan una de los siguientes escenarios:
+  /*
+    1) Recibe nuevas props
+    2) algun metodo ejecuto el setState()
+    3) algun metodo ejecuto el forceUpdate()
+
+    Por consecuencia el componenete directamente ejecuta el render. Una vez que se hizo el render
+    se ejecuta el metodo componentDidUpdate()
+  */
+  // como es una actualizacion podemos acceder a la informacion de las propiedades y el estado que
+  // tenia el componente antes de actualizarse a traves de los parametros "prevProps" y "prevState"
+  // nos sirve para comprar el estado previo con el estado actual
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps)
+    console.log(prevState)
+  }
+
+  // Los tres metodos siguientes estan deprecados (ya no se usan)
   // componentWillReceiveProps(nextProps) {}
-
   // shouldComponentUpdate(nextProps, nextState) {}
-
   // componentWillUpdate(nextProps, nextState) {}
 
   // componentDidUpdate(prevProps, prevState) {}
 
+  // CILCO DE VIDA DEL DESMONTAJE
+  /*
+    El metodo componentWillUnmount() es el unico metodo que se ejecuta cuando el componente se
+    ha demontado
+  */
   // componentWillUnmount() {}
 
   // Metodo render es obligatorio.
