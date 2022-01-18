@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-
+import { Link } from "react-router-dom";
 // Renderizando el componente con Props
 
 export default function Curso4(props) {
@@ -7,7 +7,7 @@ export default function Curso4(props) {
   // Se puede desestructurar directamente en los parentesis ({title, imagen, price})
   // o hacerlo en una constante
 
-  const {imagen, title, price, prof} = props
+  const {id, imagen, title, price, prof} = props
 
   // haciendo validadesciones de las props
   // podemos hacer dos tipos de validacion:
@@ -24,7 +24,9 @@ export default function Curso4(props) {
   return (
     <article className="flex-1 bg-purple-400 rounded-2xl">
       <header>
-        <img src={imagen} alt={title} className="rounded-2xl" />
+        <Link to={`/cursos/${id}`}>
+          <img src={imagen} alt={title} className="rounded-2xl" />
+        </Link>
       </header>
       <div className="text-center">
         <h4 className="text-sm" >{`Profesor: ${prof}`}</h4>
