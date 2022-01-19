@@ -9,6 +9,7 @@ import Course from "./components/Course";
 import CursoGrid from "./components/CursoGrid";
 import Formulario from "./components/Formulario";
 import Navbar from "./components/Navbar";
+import Users from "./components/Users";
 
 // Para renderizar varios componentes iguales lo mas optimo no es ponerlos uno por uno 
 // si no renderizar varios componentes con un ciclo. Para eso vamos a necesitar hacer un 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/cursos" element={<CursoGrid />} />
         <Route path="/cursos/:id" element={<Course />} />
         <Route path="/formulario" element={<Formulario />} />
+        <Route path="/usuarios" element={<Users />} />
         <Route path="*" element={
           <div>
             <h1>Error 404</h1>
