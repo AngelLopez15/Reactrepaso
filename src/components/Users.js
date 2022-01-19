@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  axios from 'axios';
 import UserCard from './UserCard';
 
 class Users extends Component {
@@ -12,18 +13,28 @@ class Users extends Component {
 
   }
 
-  componentDidMount() {
+  // Con fetch
+  // componentDidMount() {
+  //   // haciendo la peticion a la API una vez que el componente ya se ha montado
+  //   fetch('https://jsonplaceholder.typicode.com/users', {method: 'get'})
+  //     .then( response => response.json())
+  //     .then( json => {
+  //       this.setState({
+  //         users: json
+  //       })
+  //     })
+  //     .catch( error => console.log('error', error))
+  // }
 
+  // Con Axios
+  componentDidMount() {
     // haciendo la peticion a la API una vez que el componente ya se ha montado
-    fetch('https://jsonplaceholder.typicode.com/users', {method: 'get'})
-      .then( response => response.json())
-      .then( json => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then( res => {
         this.setState({
-          users: json
+          users: res.data
         })
       })
-      .catch( error => console.log('error', error))
-
   }
 
   // shouldComponentUpdate(nextProps, nextState) {
