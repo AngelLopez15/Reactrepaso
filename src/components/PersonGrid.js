@@ -45,4 +45,4 @@ class PersonGrid extends Component {
   }
 }
 
-export default PersonGrid;
+export default PersonGrid
