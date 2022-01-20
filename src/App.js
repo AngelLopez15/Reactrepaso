@@ -9,6 +9,7 @@ import Course from "./components/Course";
 import CursoGrid from "./components/CursoGrid";
 import Formulario from "./components/Formulario";
 import Navbar from "./components/Navbar";
+import PersonGrid from "./components/PersonGrid";
 import Users from "./components/Users";
 
 // Para renderizar varios componentes iguales lo mas optimo no es ponerlos uno por uno 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/cursos/:id" element={<Course />} />
         <Route path="/formulario" element={<Formulario />} />
         <Route path="/usuarios" element={<Users />} />
+        <Route path="/personas" element={<PersonGrid />} />
         <Route path="*" element={
           <div>
             <h1>Error 404</h1>

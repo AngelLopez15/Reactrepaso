@@ -60,7 +60,7 @@ class Users extends Component {
     return (
       <div>
         <h1>Usuarios</h1>
-        <div>
+        <div className='flex justify-center flex-wrap'>
           {
             users.map( user => (
               <UserCard 

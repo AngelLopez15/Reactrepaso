@@ -61,6 +61,20 @@ function Navbar() {
             Usuarios
           </NavLink>
         </li>
+        <li className='px-5'>
+          <NavLink
+            style={({ isActive }) => {
+              return {
+                display: "block",
+                margin: "1rem 0",
+                color: isActive ? "red" : ""
+              };
+            }}
+            to="/personas"
+          >
+            Personas
+          </NavLink>
+        </li>
       </ul>
     </nav>
   )
