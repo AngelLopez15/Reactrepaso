@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
+import CartCounter from './CartCounter';
 
 function Navbar() {
   return (
@@ -75,6 +76,7 @@ function Navbar() {
             Personas
           </NavLink>
         </li>
+        <CartCounter />
       </ul>
     </nav>
   )
