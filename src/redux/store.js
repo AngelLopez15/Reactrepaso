@@ -1,5 +1,6 @@
 // Debemos crear el estado global de la aplicacion
 import { createStore } from "redux"
+import { composeWithDevTools } from "redux-devtools-extension"
 import { ADD_TO_CART, DELATE_FROM_CART } from "./actions"
 
 // Declarando el estado inicial
@@ -39,4 +40,4 @@ const rootReducer = (state = initialStore, action ) => {
 }
 
 // A la funcion create store debemos de pasarle el reducer
-export default createStore(rootReducer)
+export default createStore(rootReducer, composeWithDevTools())
