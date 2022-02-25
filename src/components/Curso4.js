@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+import { addToCart, delateFromCart } from '../redux/actionCreators';
+import { connect } from 'react-redux';
 // Renderizando el componente con Props
 
-export default function Curso4(props) {
+const Curso4 = (props) => {
   // desestructurando las props
   // Se puede desestructurar directamente en los parentesis ({title, imagen, price})
   // o hacerlo en una constante
 
-  const {id, imagen, title, price, prof} = props
+  const {id, imagen, title, price, prof, addCourseToCart, cart, deleteCourseFromCart} = props
 
   // haciendo validadesciones de las props
   // podemos hacer dos tipos de validacion:
@@ -33,13 +35,44 @@ export default function Curso4(props) {
         <h4 className="text-sm" >{title}</h4>
       </div>
       <footer>
-        <p className="flex justify-center">
-          {`$ ${price}`}
-        </p>
+        {
+          cart.find(a => a === id)
+          ?
+            <p 
+              className="flex justify-center text-white bg-red-400 py-2 cursor-pointer"
+              onClick={() => deleteCourseFromCart(id)}
+            >
+              Remover del Carrito
+            </p>
+          :
+            <p 
+              className="flex justify-center text-white bg-red-400 py-2 cursor-pointer"
+              onClick={() => addCourseToCart(id)}
+            >
+              { `$ ${price}` }
+            </p>
+        }
       </footer>
     </article>
   )
 }
+
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+})
+
+// Recibe un dispatch para generar otro objeto
+// el primer elemento del objeto va a ser la funcion
+const mapDispatchToProps = (dispatch) => ({
+  addCourseToCart(id) {
+    dispatch(addToCart(id))
+  },
+  deleteCourseFromCart(id) {
+    dispatch(delateFromCart(id))
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Curso4)
 
 // Para ocupar PropTypes devemos declarar un objeto que contendra que tipo de
 // dato esperamos que nos llegue en cada propiedad
